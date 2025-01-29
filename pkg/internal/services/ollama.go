@@ -29,7 +29,7 @@ var LargeModel *ollama.LLM
 
 func ConnectOllama() error {
 	model := viper.GetString("ollama.model")
-	llm, err := ollama.New(ollama.WithModel(model))
+	llm, err := ollama.New(ollama.WithModel(model), ollama.WithServerURL(viper.GetString("ollama.url")))
 	if err != nil {
 		return err
 	}
