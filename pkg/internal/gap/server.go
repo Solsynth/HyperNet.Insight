@@ -26,7 +26,7 @@ func InitializeToNexus() error {
 	var err error
 	Nx, err = nex.NewNexusConn(viper.GetString("nexus_addr"), &proto.ServiceInfo{
 		Id:       viper.GetString("id"),
-		Type:     "wa",
+		Type:     "ai",
 		Label:    "Insight",
 		GrpcAddr: grpcOutbound,
 		HttpAddr: lo.ToPtr("http://" + httpOutbound + "/api"),
