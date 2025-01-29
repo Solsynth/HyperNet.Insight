@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = ".;proto";
+
+package proto;
+
+service InsightService {
+  rpc GenerateInsight(InsightRequest) returns (InsightResponse) {}
+}
+
+message InsightRequest {
+  string source = 1;
+  uint64 user_id = 2;
+}
+
+message InsightResponse {
+  string response = 1;
+}

@@ -1,0 +1,17 @@
+id = "insight01"
+
+bind = "0.0.0.0:8011"
+grpc_bind = "0.0.0.0:7011"
+
+nexus_addr = "localhost:7001"
+
+[debug]
+database = true
+print_routes = false
+
+[security]
+internal_public_key = "keys/internal_public_key.pem"
+
+[ollama]
+model = "llama3"
+url = "http://localhost:11434"
