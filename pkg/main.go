@@ -67,11 +67,6 @@ func main() {
 		log.Fatal().Err(err).Msg("An error occurred when running database auto migration.")
 	}
 
-	// Connect to ollama
-	if err := services.ConnectOllama(); err != nil {
-		log.Fatal().Err(err).Msg("An error occurred when connecting to ollama.")
-	}
-
 	// Initialize cache
 	if err := cache.NewStore(); err != nil {
 		log.Fatal().Err(err).Msg("An error occurred when initializing cache.")
