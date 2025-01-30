@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
 	"github.com/tmc/langchaingo/llms"
 	"github.com/tmc/langchaingo/llms/ollama"
@@ -49,11 +50,13 @@ func GenerateInsights(source string) (string, error) {
 		return "", fmt.Errorf("failed to format prompt: %v", err)
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Minute)
-	defer cancel()
-	completion, err := LargeModel.Call(ctx, inPrompt,
+	start := time.Now()
+	completion, err := LargeModel.Call(context.Background(), inPrompt,
 		llms.WithTemperature(0.8),
 	)
+	took := time.Since(start)
+
+	log.Info().Dur("took", took).Msg("Insight generated successfully...")
 
 	return completion, err
 }
